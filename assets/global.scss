@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+.auto-expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms;
+
+  &--show {
+    grid-template-rows: 1fr;
+  }
+
+  &__object {
+    overflow: hidden;
+  }
+}
+
+.icon {
+  &--active {
+    transition: 0.5s ease-in-out;
+    transform: rotate(0deg);
+  }
+  &--not-active {
+    transition: 0.5s ease-in-out;
+    transform: rotate(180deg);
+  }
+}
+
+.editable {
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+  border-radius: 4px;
+  padding: 2px 5px;
+
+  &--active {
+    outline: 2px solid #3b82f6;
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+}

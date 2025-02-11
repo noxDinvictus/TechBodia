@@ -1,0 +1,42 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "prettier": "prettier --write \"**/*.+(ts|tsx|js|json|scss|md|vue)\""
+  },
+  "dependencies": {
+    "@nuxt/image": "1.9.0",
+    "@pinia/nuxt": "^0.9.0",
+    "@types/cookie": "^1.0.0",
+    "axios": "^1.7.9",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "moment": "^2.30.1",
+    "nuxt": "^3.15.4",
+    "nuxt-storage": "^1.2.2",
+    "pinia": "^2.3.1",
+    "prettier": "^3.5.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "sass": "^1.84.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss": "^3.4.12",
+    "toastify-js": "^1.12.0",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "lint-staged": {
+    "**/*.+(ts|vue|js|md)": [
+      "yarn prettier"
+    ]
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.13.1",
+    "@types/toastify-js": "^1.12.3"
+  }
+}
