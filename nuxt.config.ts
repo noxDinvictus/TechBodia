@@ -13,7 +13,12 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL: '/TechBodia/', // Required for GitHub Pages
-    buildAssetsDir: '/assets/', // Ensures assets load correctly
+    baseURL: '/TechBodia/',
+    buildAssetsDir: '/assets/',
+  },
+  router: {
+    options: {
+      hashMode: true,
+    },
   },
 });
