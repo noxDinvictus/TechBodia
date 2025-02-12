@@ -46,10 +46,6 @@ const router = useRouter();
 const userStore = useUserStore();
 const { isCreating, isFetching } = storeToRefs(userStore);
 
-useHead({
-  title: 'Login',
-});
-
 const payload = ref<User.Payload>({
   userName: '',
   password: '',
