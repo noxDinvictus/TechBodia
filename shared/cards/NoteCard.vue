@@ -6,14 +6,10 @@
       <div class="flex items-center justify-end gap-2">
         <div class="flex flex-1 items-center gap-1">
           <div v-if="isEditing" class="flex-center gap-1">
-            <ButtonWithIcon
-              icon="/icons/save.svg"
-              alt="edit"
-              @click="update()"
-            />
+            <ButtonWithIcon :icon="saveIcon" alt="save" @click="update()" />
 
             <ButtonWithIcon
-              icon="/icons/cancel.svg"
+              :icon="cancelIcon"
               alt="edit"
               @click="cancelEdit(note)"
             />
@@ -21,7 +17,7 @@
 
           <ButtonWithIcon
             v-else
-            icon="/icons/edit.svg"
+            :icon="editIcon"
             alt="edit"
             @click="editNote(note)"
           />
@@ -29,13 +25,13 @@
 
         <div class="flex-center gap-1">
           <ButtonWithIcon
-            icon="/icons/delete.svg"
+            :icon="deleteIcon"
             alt="delete"
             @click="deleteNote(note.noteId)"
           />
 
           <ButtonWithIcon
-            icon="/icons/expand.svg"
+            :icon="expandIcon"
             alt="expand"
             @click="note.isExpanded = !note.isExpanded"
             :class="note.isExpanded ? 'icon--active' : 'icon--not-active'"
@@ -85,6 +81,11 @@
 </template>
 
 <script setup lang="ts">
+import cancelIcon from '@/assets/icons/cancel.svg';
+import deleteIcon from '@/assets/icons/delete.svg';
+import editIcon from '@/assets/icons/edit.svg';
+import expandIcon from '@/assets/icons/expand.svg';
+import saveIcon from '@/assets/icons/save.svg';
 import { ref } from 'vue';
 import type { Note } from '~/data/models/note.model';
 import AutoExpand from '~/shared/components/AutoExpand.vue';
