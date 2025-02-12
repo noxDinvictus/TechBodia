@@ -5,7 +5,7 @@
     <div class="rounded-md bg-white p-7">
       <div class="flex items-center justify-end gap-2">
         <div class="flex flex-1 items-center gap-1">
-          <div v-if="isEditing" class="flex-center gap-1">
+          <div v-if="isEditing" class="flex-center gap-5">
             <ButtonWithIcon :icon="saveIcon" alt="save" @click="update()" />
 
             <ButtonWithIcon
@@ -23,20 +23,20 @@
           />
         </div>
 
-        <div class="flex-center gap-1">
+        <div class="flex-1">
           <ButtonWithIcon
             :icon="deleteIcon"
             alt="delete"
             @click="deleteNote(note.noteId)"
           />
-
-          <ButtonWithIcon
-            :icon="expandIcon"
-            alt="expand"
-            @click="note.isExpanded = !note.isExpanded"
-            :class="note.isExpanded ? 'icon--active' : 'icon--not-active'"
-          />
         </div>
+
+        <ButtonWithIcon
+          :icon="expandIcon"
+          alt="expand"
+          @click="note.isExpanded = !note.isExpanded"
+          :class="note.isExpanded ? 'icon--active' : 'icon--not-active'"
+        />
       </div>
 
       <div class="py-2">
