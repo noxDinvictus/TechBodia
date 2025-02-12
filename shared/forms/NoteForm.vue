@@ -4,6 +4,7 @@
   >
     <div class="flex rounded-md bg-slate-300 p-7">
       <form @submit.prevent="createNote" class="center w-full flex-col">
+        <h2 class="mb-2 text-center font-bold">Create Note</h2>
         <div class="mb-4 w-full text-lg">
           <input
             v-model="payload.title"
