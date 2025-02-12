@@ -12,4 +12,8 @@ export default defineNuxtConfig({
       API_BASE_URL: process.env.NUXT_PUBLIC_API_BASE_URL,
     },
   },
+  app: {
+    baseURL: '/TechBodia/', // Required for GitHub Pages
+    buildAssetsDir: '/assets/', // Ensures assets load correctly
+  },
 });
