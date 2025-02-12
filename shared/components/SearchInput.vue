@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mx-auto flex max-w-md overflow-hidden rounded-md border-2 border-blue-500 px-4 py-3 font-[sans-serif]"
+    class="mx-auto flex max-w-md overflow-hidden rounded-md border-2 border-blue-500 px-4 py-3 font-[sans-serif] sm:mx-2"
   >
     <output v-if="loading" class="mr-3 inline h-4 w-4">
       <svg
