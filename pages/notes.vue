@@ -1,24 +1,30 @@
 <template>
-  <div class="m-2 flex justify-end">
-    <Button type="submit" title="logout" @click="handleLogout" />
-  </div>
-
-  <SearchInput :loading="isSearching" @search="getSearch" />
-  <div class="flex flex-wrap gap-5 p-5 md:flex-col">
-    <div>
-      <NoteForm />
+  <client-only>
+    <div class="m-2 flex justify-end">
+      <Button type="submit" title="logout" @click="handleLogout" />
     </div>
 
-    <div class="flex flex-1 flex-wrap gap-3">
-      <div class="flex-[1_1_250px]">
-        <NoteCard v-for="note in firstHalf" :key="note.noteId" :note="note" />
+    <SearchInput :loading="isSearching" @search="getSearch" />
+    <div class="flex flex-wrap gap-5 p-5 md:flex-col">
+      <div>
+        <NoteForm />
       </div>
 
-      <div class="flex-[1_1_250px]" v-if="notes.length > 1">
-        <NoteCard v-for="note in secondHalf" :key="note.noteId" :note="note" />
+      <div class="flex flex-1 flex-wrap gap-3">
+        <div class="flex-[1_1_250px]">
+          <NoteCard v-for="note in firstHalf" :key="note.noteId" :note="note" />
+        </div>
+
+        <div class="flex-[1_1_250px]" v-if="notes.length > 1">
+          <NoteCard
+            v-for="note in secondHalf"
+            :key="note.noteId"
+            :note="note"
+          />
+        </div>
       </div>
     </div>
-  </div>
+  </client-only>
 </template>
 <script setup lang="ts">
 import authMiddleware from '~/middleware/auth';
