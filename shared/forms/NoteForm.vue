@@ -38,7 +38,7 @@ import { useNoteStore } from '~/stores/note/index.module';
 import Button from '../components/Button.vue';
 
 const noteState = useNoteStore();
-const { note, isCreating } = storeToRefs(noteState);
+const { isCreating } = storeToRefs(noteState);
 
 const payload = ref<Note.Payload>({
   title: '',
