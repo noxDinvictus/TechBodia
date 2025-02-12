@@ -1,6 +1,6 @@
 <template>
   <button :type="type" @click="$emit('click')">
-    <NuxtImg :src="`/TechBodia/${icon}`" :alt="alt" height="20" width="20" />
+    <NuxtImg :src="icon" :alt="alt" height="20" width="20" />
   </button>
 </template>
 <script setup lang="ts">
