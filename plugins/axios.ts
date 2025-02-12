@@ -1,11 +1,9 @@
-import { defineNuxtPlugin, useRuntimeConfig } from '#app';
+import { defineNuxtPlugin } from '#app';
 import type { AxiosError, AxiosInstance } from 'axios';
 import axios from 'axios';
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const config = useRuntimeConfig();
-
-  const baseURL = `${config.public.API_BASE_URL}`;
+  const baseURL = 'https://techbodiaapi.onrender.com';
 
   const api: AxiosInstance = axios.create({
     baseURL,

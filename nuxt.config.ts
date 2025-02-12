@@ -9,9 +9,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      API_BASE_URL:
-        process.env.NUXT_PUBLIC_API_BASE_URL ??
-        'https://techbodiaapi.onrender.com',
+      API_BASE_URL: 'https://techbodiaapi.onrender.com',
     },
   },
   app: {
