@@ -33,16 +33,22 @@ export function toastT(text: string, type: 'success' | 'error') {
   const nuxtApp = useNuxtApp();
   const toast = nuxtApp.$toast;
 
-  const backgroundColor = type === 'success' ? 'green' : 'red';
-  const icon = type === 'success' ? '✅' : '❌';
+  // Create a toast container
+  const toastContainer = document.createElement('div');
+  toastContainer.className = `custom-toast p-4 rounded-lg text-white flex items-center gap-2 shadow-lg ${
+    type === 'success' ? 'bg-green-500' : 'bg-red-500'
+  }`;
+
+  toastContainer.innerHTML = `
+    <span>${type === 'success' ? '✅' : '❌'}</span>
+    <span>${text}</span>
+  `;
 
   toast({
-    text: `<span style="display: flex; align-items: center; gap: 8px;">
-             <span>${icon}</span> <span>${text}</span>
-           </span>`,
-    backgroundColor,
+    node: toastContainer,
     escapeMarkup: false,
     close: false,
+    className: 'custom-toast-wrapper',
   });
 }
 
