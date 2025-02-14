@@ -1,7 +1,8 @@
+import type { M } from '~/data/generatedModels';
 import { User } from '~/data/models/user.model';
 
 type Model = User.Model;
-type Payload = User.Payload;
+type Payload = M.UserPayload;
 
 const endpoint = '/users';
 const from = 'user.service';

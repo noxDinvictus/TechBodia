@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
 import { commonState } from '~/data/constant';
+import type { M } from '~/data/generatedModels';
 import type { I } from '~/data/interfaces';
-import type { User } from '~/data/models/user.model';
 import * as service from './index.service';
 
-type Payload = User.Payload;
+type Payload = M.UserPayload;
 
 interface UserState extends I.CommonState {
   token: string | null;
@@ -24,7 +24,7 @@ export const useUserStore = defineStore('user', {
       this.isCreating = false;
     },
 
-    async authenticate(payload: User.Payload) {
+    async authenticate(payload: Payload) {
       this.isFetching = true;
 
       const res = await service.authenticateApi(payload);
