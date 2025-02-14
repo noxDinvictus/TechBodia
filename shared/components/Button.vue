@@ -1,7 +1,12 @@
 <template>
   <button
     :type="type"
-    class="mr-2 inline-flex items-center rounded bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    :class="
+      twMerge(
+        'rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600',
+        className,
+      )
+    "
     @click="$emit('click')"
   >
     <output v-if="loading" class="mr-3 inline h-4 w-4">
@@ -27,10 +32,13 @@
 </template>
 
 <script setup lang="ts">
+import { twMerge } from 'tailwind-merge';
+
 interface IProps {
   loading?: boolean;
   title: string;
   type?: 'button' | 'submit' | 'reset';
+  className?: string;
 }
 
 defineProps<IProps>();
