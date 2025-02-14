@@ -46,3 +46,22 @@
     background-color: rgba(59, 130, 246, 0.1);
   }
 }
+
+/* Override Toastify Styles */
+.custom-toast-wrapper {
+  background: transparent !important; /* Removes the blue border */
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Custom Toast Style */
+.custom-toast {
+  width: auto;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
