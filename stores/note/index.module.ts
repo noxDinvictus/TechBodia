@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { commonState } from '~/data/constant';
+import { commonState, metadata } from '~/data/constant';
 import type { M } from '~/data/generatedModels';
 import type { I } from '~/data/interfaces';
 import type { Note } from '~/data/models/note.model';
@@ -11,6 +11,7 @@ type Payload = M.NotePayload;
 interface NoteState extends I.CommonState {
   notes: Model[];
   note: Model | null;
+  meta: M.MetaDTO;
 }
 
 export const useNoteStore = defineStore('note', {
@@ -18,6 +19,7 @@ export const useNoteStore = defineStore('note', {
     notes: [],
     note: null,
     ...commonState,
+    meta: { ...metadata },
   }),
   actions: {
     async create(payload: Payload) {
@@ -45,7 +47,11 @@ export const useNoteStore = defineStore('note', {
 
       const res = await service.getNotesListApi(payload);
 
-      if (res) this.notes = res;
+      if (res) {
+        const { items, meta } = res;
+        this.notes = items;
+        this.meta = meta;
+      }
 
       this.isSearching = false;
     },

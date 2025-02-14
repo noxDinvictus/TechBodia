@@ -1,11 +1,12 @@
 import { M } from '~/data/generatedModels';
+import type { I } from '~/data/interfaces';
 import { Note } from '~/data/models/note.model';
 
 type Model = Note.Model;
 type Payload = M.NotePayload;
 type Search = Note.Search;
 type Result = Promise<Model | null>;
-type Results = Promise<Model[] | null>;
+type Results = Promise<I.Results<Model> | null>;
 
 const endpoint = '/notes';
 const from = 'note.service';
@@ -38,7 +39,10 @@ export async function getNotesListApi(payload: Search): Results {
   try {
     const { data } = await getApi().post(`${endpoint}/list`, payload);
 
-    return data.result.items.map((e: any) => new Note.Model(e));
+    return {
+      items: data.result.items?.map((e: any) => new Note.Model(e)),
+      meta: new M.MetaDTO(data.result.meta),
+    };
   } catch (error) {
     handleError(error, from);
     return null;
