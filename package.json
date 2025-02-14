@@ -14,7 +14,7 @@
     "dto:download": "curl https://localhost:44365/swagger/v1/swagger.yaml -o C:\\temp\\techbodia.yaml --insecure -s",
     "dto:generate": "yarn swagger-typescript-api --path C:\\temp\\techbodia.yaml --output ./data --name dtos.ts --no-client --silent",
     "generate:model": "node generateModel.js",
-    "dto": "yarn dto:download && yarn dto:generate && yarn generate:model",
+    "dto": "yarn dto:download && yarn dto:generate && yarn generate:model && yarn prettier",
     "prepare": "husky install"
   },
   "lint-staged": {
