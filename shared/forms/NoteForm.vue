@@ -48,7 +48,7 @@
 </template>
 <script setup lang="ts">
 import expandIcon from '@/assets/icons/expand.svg';
-import type { Note } from '~/data/models/note.model';
+import type { M } from '~/data/generatedModels';
 import { useNoteStore } from '~/stores/note/index.module';
 import AutoExpand from '../components/AutoExpand.vue';
 import Button from '../components/Button.vue';
@@ -56,7 +56,7 @@ import ButtonWithIcon from '../components/ButtonWithIcon.vue';
 const noteState = useNoteStore();
 const { isCreating } = storeToRefs(noteState);
 
-const payload = ref<Note.Payload>({
+const payload = ref<M.NotePayload>({
   title: '',
   content: '',
 });
