@@ -3,24 +3,22 @@
 
   <form @submit.prevent="handleSubmit">
     <div class="mb-4 text-lg">
-      <input
+      <Input
         v-model="payload.username"
-        class="rounded-3xl border-none bg-white px-6 py-2 text-center shadow-xl outline-none"
+        label="Username"
         type="text"
         name="username"
-        placeholder="username"
-        required
+        :required="true"
       />
     </div>
 
     <div class="mb-4 text-lg">
-      <input
+      <Input
         v-model="payload.password"
-        class="rounded-3xl border-none bg-white px-6 py-2 text-center shadow-xl outline-none"
+        label="password"
         type="password"
         name="password"
-        placeholder="*********"
-        required
+        :required="true"
       />
     </div>
     <div class="mt-8 flex justify-center gap-2 text-lg text-black">
@@ -41,6 +39,7 @@ import { ref } from 'vue';
 import type { M } from '~/data/generatedModels';
 import { useUserStore } from '~/stores/user/index.module';
 import Button from '../components/Button.vue';
+import Input from '../components/Input.vue';
 
 const router = useRouter();
 
