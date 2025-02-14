@@ -3,7 +3,7 @@
     :type="type"
     :class="
       twMerge(
-        'rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600',
+        'flex-center rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600',
         className,
       )
     "
