@@ -74,7 +74,7 @@ export const useNoteStore = defineStore('note', {
     },
 
     async delete(id: string) {
-      this.isUpdating = true;
+      this.isDeleting = true;
 
       const res = await service.deleteApi(id);
 
@@ -82,7 +82,7 @@ export const useNoteStore = defineStore('note', {
         this.notes = this.notes.filter((e) => e.noteId !== id);
       }
 
-      this.isUpdating = false;
+      this.isDeleting = false;
     },
   },
 });
