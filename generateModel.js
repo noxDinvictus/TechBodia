@@ -8,7 +8,10 @@ const __dirname = path.dirname(__filename);
 
 // Define Paths
 const dtoFilePath = path.join(__dirname, 'data/dtos.ts'); // Adjusted path
-const outputFilePath = path.join(path.dirname(dtoFilePath), 'generatedModels.ts');
+const outputFilePath = path.join(
+  path.dirname(dtoFilePath),
+  'generatedModels.ts',
+);
 
 // Check if `dtos.ts` exists before reading
 if (!fs.existsSync(dtoFilePath)) {
@@ -37,7 +40,11 @@ while ((match = interfaceRegex.exec(dtoContent)) !== null) {
   const interfaceBody = match[2].trim();
 
   // Skip interfaces containing "Filter", "ResultOk", or "Localization"
-  if (interfaceName.includes('Filter') || interfaceName.includes('ResultOk') || interfaceName === 'Localization') {
+  if (
+    interfaceName.includes('Filter') ||
+    interfaceName.includes('ResultOk') ||
+    interfaceName === 'Localization'
+  ) {
     continue;
   }
 
@@ -62,8 +69,20 @@ function toPascalCase(str) {
 
 // Determine if a type is primitive
 function isPrimitiveType(type) {
-  const primitiveTypes = ['string', 'number', 'boolean', 'symbol', 'bigint', 'undefined', 'null', 'any'];
-  return primitiveTypes.includes(type) || (type.endsWith('[]') && primitiveTypes.includes(type.slice(0, -2)));
+  const primitiveTypes = [
+    'string',
+    'number',
+    'boolean',
+    'symbol',
+    'bigint',
+    'undefined',
+    'null',
+    'any',
+  ];
+  return (
+    primitiveTypes.includes(type) ||
+    (type.endsWith('[]') && primitiveTypes.includes(type.slice(0, -2)))
+  );
 }
 
 // Collect all used types
@@ -119,10 +138,12 @@ interfaces.forEach(({ name: interfaceName, properties }) => {
   });
 
   outputContent += `
-    constructor (data: any) {
+    constructor(data: any) {
         ${properties
           .map((prop) => {
-            let [name, type] = prop.split(':').map((p) => p.trim().replace(/;$/, ''));
+            let [name, type] = prop
+              .split(':')
+              .map((p) => p.trim().replace(/;$/, ''));
             if (!name) return '';
 
             name = name.replace('?', '').trim();
@@ -138,7 +159,10 @@ interfaces.forEach(({ name: interfaceName, properties }) => {
               }
             } else if (!isPrimitiveType(originalType) && !enums[originalType]) {
               return `this.${name} = data?.${name} ? new M.${toPascalCase(originalType)}(data?.${name}) : null;`;
-            } else if (originalType === 'string' || originalType === 'string | null') {
+            } else if (
+              originalType === 'string' ||
+              originalType === 'string | null'
+            ) {
               return `this.${name} = data?.${name} ?? '';`;
             } else {
               return `this.${name} = data?.${name};`;
