@@ -7,10 +7,10 @@ export namespace M {
     totalPages: number;
     totalItems: number;
 
-    constructor (data: any) {
-        this.currentPage = data?.currentPage;
-        this.totalPages = data?.totalPages;
-        this.totalItems = data?.totalItems;
+    constructor(data: any) {
+      this.currentPage = data?.currentPage;
+      this.totalPages = data?.totalPages;
+      this.totalItems = data?.totalItems;
     }
   }
 
@@ -22,13 +22,13 @@ export namespace M {
     updatedAt: string;
     createdByUserId: string;
 
-    constructor (data: any) {
-        this.noteId = data?.noteId ?? '';
-        this.title = data?.title ?? '';
-        this.content = data?.content ?? '';
-        this.createdAt = data?.createdAt ?? '';
-        this.updatedAt = data?.updatedAt ?? '';
-        this.createdByUserId = data?.createdByUserId ?? '';
+    constructor(data: any) {
+      this.noteId = data?.noteId ?? '';
+      this.title = data?.title ?? '';
+      this.content = data?.content ?? '';
+      this.createdAt = data?.createdAt ?? '';
+      this.updatedAt = data?.updatedAt ?? '';
+      this.createdByUserId = data?.createdByUserId ?? '';
     }
   }
 
@@ -36,9 +36,9 @@ export namespace M {
     title: string;
     content: string;
 
-    constructor (data: any) {
-        this.title = data?.title ?? '';
-        this.content = data?.content ?? '';
+    constructor(data: any) {
+      this.title = data?.title ?? '';
+      this.content = data?.content ?? '';
     }
   }
 
@@ -47,10 +47,10 @@ export namespace M {
     username: string;
     createdAt: string;
 
-    constructor (data: any) {
-        this.userId = data?.userId ?? '';
-        this.username = data?.username ?? '';
-        this.createdAt = data?.createdAt ?? '';
+    constructor(data: any) {
+      this.userId = data?.userId ?? '';
+      this.username = data?.username ?? '';
+      this.createdAt = data?.createdAt ?? '';
     }
   }
 
@@ -58,10 +58,9 @@ export namespace M {
     username: string;
     password: string;
 
-    constructor (data: any) {
-        this.username = data?.username ?? '';
-        this.password = data?.password ?? '';
+    constructor(data: any) {
+      this.username = data?.username ?? '';
+      this.password = data?.password ?? '';
     }
   }
-
 }
