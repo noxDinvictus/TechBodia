@@ -71,6 +71,8 @@ export async function deleteApi(id: string): Promise<boolean> {
   try {
     await getApi().delete(`${endpoint}/${id}`);
 
+    toastT('Delete!', 'success');
+
     return true;
   } catch (error) {
     handleError(error, from);
