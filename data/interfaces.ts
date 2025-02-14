@@ -6,6 +6,7 @@ export namespace I {
     isFetching: boolean;
     isUpdating: boolean;
     isSearching: boolean;
+    isDeleting: boolean;
   }
 
   export interface Results<T> {

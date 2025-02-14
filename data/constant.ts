@@ -6,6 +6,7 @@ export const commonState: I.CommonState = {
   isFetching: false,
   isSearching: false,
   isUpdating: false,
+  isDeleting: false,
 };
 
 export const metadata: M.MetaDTO = {
