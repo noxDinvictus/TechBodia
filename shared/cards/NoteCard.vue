@@ -27,7 +27,7 @@
           <ButtonWithIcon
             :icon="deleteIcon"
             alt="delete"
-            @click="deleteNote(note.noteId)"
+            @click="showWarningModal(note.noteId)"
           />
         </div>
 
@@ -78,8 +78,14 @@
       </AutoExpand>
     </div>
   </div>
-</template>
 
+  <WarningModal
+    :isOpen="isOpen"
+    @close="isOpen = false"
+    @yes="deleteNote"
+    :isLoading="isDeleting"
+  />
+</template>
 <script setup lang="ts">
 import cancelIcon from '@/assets/icons/cancel.svg';
 import deleteIcon from '@/assets/icons/delete.svg';
@@ -91,6 +97,7 @@ import type { Note } from '~/data/models/note.model';
 import AutoExpand from '~/shared/components/AutoExpand.vue';
 import ButtonWithIcon from '~/shared/components/ButtonWithIcon.vue';
 import { useNoteStore } from '~/stores/note/index.module';
+import WarningModal from '../modals/WarningModal.vue';
 
 interface IProps {
   note: Note.Model;
@@ -98,15 +105,22 @@ interface IProps {
 
 const props = defineProps<IProps>();
 const noteState = useNoteStore();
-const { note: payload } = storeToRefs(noteState);
+const { note: payload, isDeleting } = storeToRefs(noteState);
 
 const titleRef = ref<HTMLSpanElement | null>(null);
 const contentRef = ref<HTMLSpanElement | null>(null);
 
 const isEditing = ref(false);
+const isOpen = ref(false);
+const noteIdToDelete = ref('');
 
-function deleteNote(id: string) {
-  noteState.delete(id);
+function showWarningModal(id: string) {
+  noteIdToDelete.value = id;
+  isOpen.value = true;
+}
+
+function deleteNote() {
+  noteState.delete(noteIdToDelete.value);
 }
 
 function editNote(note: Note.Model) {
