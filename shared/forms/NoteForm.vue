@@ -18,24 +18,22 @@
 
         <AutoExpand :extend="isExpanded">
           <div class="mb-4 mt-2 w-full text-lg">
-            <input
+            <Input
               v-model="payload.title"
-              class="w-full rounded-3xl border-none bg-white px-6 py-2 text-center shadow-md outline-none"
+              label="Title"
               type="text"
               name="title"
-              placeholder="Title"
-              required
+              :required="true"
             />
           </div>
 
           <div class="mb-4 w-full text-lg">
-            <textarea
+            <TextArea
               v-model="payload.content"
-              class="w-full rounded-3xl border-none bg-white px-6 py-2 text-center shadow-md outline-none"
+              label="Content"
               type="text"
               name="content"
-              placeholder="Content"
-              rows="4"
+              :rows="4"
             />
           </div>
           <div class="mb-2 flex justify-center text-lg text-black">
@@ -53,6 +51,8 @@ import { useNoteStore } from '~/stores/note/index.module';
 import AutoExpand from '../components/AutoExpand.vue';
 import Button from '../components/Button.vue';
 import ButtonWithIcon from '../components/ButtonWithIcon.vue';
+import Input from '../components/Input.vue';
+import TextArea from '../components/TextArea.vue';
 const noteState = useNoteStore();
 const { isCreating } = storeToRefs(noteState);
 
