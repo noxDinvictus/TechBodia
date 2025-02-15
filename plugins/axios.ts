@@ -3,7 +3,7 @@ import type { AxiosError, AxiosInstance } from 'axios';
 import axios from 'axios';
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const baseURL = 'https://techbodiaapi.onrender.com';
+  const baseURL = 'https://techbodiaapi.onrender.com/v1';
 
   const api: AxiosInstance = axios.create({
     baseURL,
