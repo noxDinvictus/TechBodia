@@ -56,7 +56,7 @@ const secondHalf = computed(() =>
 );
 
 onBeforeMount(async () => {
-  await noteState.getNotesList({ searchText: '' });
+  await noteState.getList({ searchText: '' });
 });
 
 function handleLogout() {
@@ -65,6 +65,6 @@ function handleLogout() {
 }
 
 async function getSearch(searchText: string) {
-  await noteState.getNotesList({ searchText });
+  await noteState.getList({ searchText });
 }
 </script>
