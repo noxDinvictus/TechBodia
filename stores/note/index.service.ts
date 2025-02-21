@@ -1,10 +1,13 @@
+import type { NoteFilter } from '~/data/dtos';
 import { M } from '~/data/generatedModels';
 import type { I } from '~/data/interfaces';
 import { Note } from '~/data/models/note.model';
+import { removeFalseyObject } from '~/utils/common-function';
 
 type Model = Note.Model;
 type Payload = M.NotePayload;
-type Search = Note.Search;
+type F = NoteFilter;
+
 type Result = Promise<Model | null>;
 type Results = Promise<I.Results<Model> | null>;
 
@@ -35,13 +38,15 @@ export async function getByIdApi(id: string): Result {
   }
 }
 
-export async function getNotesListApi(payload: Search): Results {
+export async function getListApi(payload: F): Results {
   try {
-    const { data } = await getApi().post(`${endpoint}/list`, payload);
+    const params = removeFalseyObject(payload);
+
+    const { data } = await getApi().get(`${endpoint}/list`, { params });
 
     return {
       items: data.result.items?.map((e: any) => new Note.Model(e)),
-      meta: new M.MetaDTO(data.result.meta),
+      metadata: new M.MetadataDTO(data.result.meta),
     };
   } catch (error) {
     handleError(error, from);
