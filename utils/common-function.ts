@@ -55,3 +55,28 @@ export function toastT(text: string, type: 'success' | 'error') {
 export function getApi() {
   return useNuxtApp().$api as AxiosInstance;
 }
+
+/**
+ *
+ * @param object you want to be formatted to remove the falsey values
+ * @returns formatted value of object without the falsey values
+ *
+ * @note this can also be used to remove falsey values on a nested object
+ */
+export function removeFalseyObject(obj: any): Partial<any> {
+  // remove all object that has no value
+  // DOCS: https://stackoverflow.com/questions/38275753/how-to-remove-empty-values-from-object-using-lodash
+  const finalObj: any = {};
+
+  Object.keys(obj).forEach((key) => {
+    if (obj[key] && typeof obj[key] === 'object') {
+      const nestedObj = removeFalseyObject(obj[key]);
+      if (Object.keys(nestedObj).length) {
+        finalObj[key] = nestedObj;
+      }
+    } else if (obj[key] !== '' && obj[key] !== undefined && obj[key] !== null) {
+      finalObj[key] = obj[key];
+    }
+  });
+  return finalObj;
+}
