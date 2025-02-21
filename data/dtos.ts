@@ -9,13 +9,32 @@
  * ---------------------------------------------------------------
  */
 
-export interface MetaDTO {
+export interface MetadataDTO {
   /** @format int32 */
   currentPage?: number;
   /** @format int32 */
   totalPages?: number;
   /** @format int32 */
   totalItems?: number;
+}
+
+export interface Note {
+  /** @format uuid */
+  noteId?: string;
+  /** @minLength 1 */
+  title: string;
+  content?: string | null;
+  /** @format date-time */
+  createdAt?: string | null;
+  /** @format uuid */
+  createdByUserId: string;
+  /** @format date-time */
+  updatedAt?: string | null;
+  /** @format uuid */
+  updatedByUserId?: string | null;
+  isDeleted?: boolean;
+  /** @format byte */
+  rowVersion?: string | null;
 }
 
 export interface NoteDTO {
@@ -32,28 +51,30 @@ export interface NoteDTO {
 }
 
 export interface NoteDTOResultOk {
-  result?: NoteDTO;
+  result?: NoteDTO | null;
   /** @format int32 */
   statusCode?: number;
 }
 
 export interface NoteFilter {
+  searchText?: string | null;
   orderByColumn?: string | null;
   orderByDescending?: boolean;
   /** @format int32 */
   currentPage?: number;
   /** @format int32 */
   itemsPerPage?: number;
-  searchText?: string | null;
 }
 
 export interface NoteNoteDTONoteFilterListResultDTO {
+  filter?: NoteFilter | null;
+  baseItems?: Note[] | null;
   items?: NoteDTO[] | null;
-  meta?: MetaDTO;
+  metadata?: MetadataDTO | null;
 }
 
 export interface NoteNoteDTONoteFilterListResultDTOResultOk {
-  result?: NoteNoteDTONoteFilterListResultDTO;
+  result?: NoteNoteDTONoteFilterListResultDTO | null;
   /** @format int32 */
   statusCode?: number;
 }
@@ -61,6 +82,11 @@ export interface NoteNoteDTONoteFilterListResultDTOResultOk {
 export interface NotePayload {
   title?: string | null;
   content?: string | null;
+}
+
+export enum Roles {
+  User = 'User',
+  Admin = 'Admin',
 }
 
 export interface StringResultOk {
@@ -75,10 +101,11 @@ export interface UserDTO {
   username?: string | null;
   /** @format date-time */
   createdAt?: string;
+  role?: Roles;
 }
 
 export interface UserDTOResultOk {
-  result?: UserDTO;
+  result?: UserDTO | null;
   /** @format int32 */
   statusCode?: number;
 }
@@ -86,4 +113,5 @@ export interface UserDTOResultOk {
 export interface UserPayload {
   username?: string | null;
   password?: string | null;
+  role?: Roles;
 }
