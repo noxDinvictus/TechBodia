@@ -10,8 +10,4 @@ export namespace Note {
       this.isExpanded = data?.isExpanded ?? false;
     }
   }
-
-  export interface Search {
-    searchText?: string;
-  }
 }
