@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { commonState, metadata } from '~/data/constant';
+import type { NoteFilter } from '~/data/dtos';
 import type { M } from '~/data/generatedModels';
 import type { I } from '~/data/interfaces';
 import type { Note } from '~/data/models/note.model';
@@ -7,11 +8,12 @@ import * as service from './index.service';
 
 type Model = Note.Model;
 type Payload = M.NotePayload;
+type F = NoteFilter;
 
 interface NoteState extends I.CommonState {
   notes: Model[];
   note: Model | null;
-  meta: M.MetaDTO;
+  metadata: M.MetadataDTO;
 }
 
 export const useNoteStore = defineStore('note', {
@@ -19,7 +21,7 @@ export const useNoteStore = defineStore('note', {
     notes: [],
     note: null,
     ...commonState,
-    meta: { ...metadata },
+    metadata: { ...metadata },
   }),
   actions: {
     async create(payload: Payload) {
@@ -42,15 +44,15 @@ export const useNoteStore = defineStore('note', {
       this.isFetching = false;
     },
 
-    async getNotesList(payload: Note.Search) {
+    async getList(payload: F) {
       this.isSearching = true;
 
-      const res = await service.getNotesListApi(payload);
+      const res = await service.getListApi(payload);
 
       if (res) {
-        const { items, meta } = res;
+        const { items, metadata } = res;
         this.notes = items;
-        this.meta = meta;
+        this.metadata = metadata;
       }
 
       this.isSearching = false;
