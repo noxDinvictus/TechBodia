@@ -9,7 +9,7 @@ export const commonState: I.CommonState = {
   isDeleting: false,
 };
 
-export const metadata: M.MetaDTO = {
+export const metadata: M.MetadataDTO = {
   currentPage: 1,
   totalPages: 0,
   totalItems: 0,

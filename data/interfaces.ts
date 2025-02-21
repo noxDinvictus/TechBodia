@@ -11,6 +11,6 @@ export namespace I {
 
   export interface Results<T> {
     items: T[];
-    meta: M.MetaDTO;
+    metadata: M.MetadataDTO;
   }
 }
