@@ -29,19 +29,14 @@ const enumRegex = /export\s+enum\s+(\w+)\s*{([\s\S]*?\n)}/g;
 let match;
 const interfaces = [];
 const enums = {};
-const usedTypes = new Set();
 
 // Extract interfaces
 while ((match = interfaceRegex.exec(dtoContent)) !== null) {
   const interfaceName = match[1];
   const interfaceBody = match[2].trim();
 
-  // Skip interfaces containing "Filter", "ResultOk", or "Localization"
-  if (
-    interfaceName.includes('Filter') ||
-    interfaceName.includes('ResultOk') ||
-    interfaceName === 'Localization'
-  ) {
+  // Skip interfaces containing "Filter" or "ResultOk"
+  if (interfaceName.includes('Filter') || interfaceName.includes('ResultOk')) {
     continue;
   }
 
@@ -88,7 +83,6 @@ interfaces.forEach(({ properties }) => {
     let [, type] = prop.split(':').map((p) => p.trim().replace(/;$/, ''));
     if (type && !isPrimitiveType(type) && !enums[type]) {
       type = type.replace(' | null', '').replace('?', '').trim();
-      usedTypes.add(type);
     }
   });
 });
