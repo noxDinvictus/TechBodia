@@ -14,3 +14,16 @@ export namespace I {
     metadata: M.MetadataDTO;
   }
 }
+
+export namespace Filter {
+  export interface Base {
+    orderByColumn?: string | null;
+    orderByDescending?: boolean;
+    currentPage?: number;
+    itemsPerPage?: number;
+  }
+
+  export interface Note extends Base {
+    searchText?: string | null;
+  }
+}
