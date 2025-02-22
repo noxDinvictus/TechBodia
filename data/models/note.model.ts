@@ -1,4 +1,4 @@
-import { M } from '../generatedModels';
+import { M } from '../models';
 
 export namespace Note {
   export class Model extends M.NoteDTO {

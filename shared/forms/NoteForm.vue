@@ -46,7 +46,7 @@
 </template>
 <script setup lang="ts">
 import expandIcon from '@/assets/icons/expand.svg';
-import type { M } from '~/data/generatedModels';
+import type { M } from '~/data/models';
 import { useNoteStore } from '~/stores/note/index.module';
 import AutoExpand from '../components/AutoExpand.vue';
 import Button from '../components/Button.vue';

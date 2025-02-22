@@ -36,7 +36,8 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { M } from '~/data/generatedModels';
+import { Roles } from '~/data/dtos';
+import type { M } from '~/data/models';
 import { useUserStore } from '~/stores/user/index.module';
 import Button from '../components/Button.vue';
 import Input from '../components/Input.vue';
@@ -49,6 +50,7 @@ const { isCreating, isFetching } = storeToRefs(userStore);
 const payload = ref<M.UserPayload>({
   username: '',
   password: '',
+  role: Roles.User,
 });
 
 async function register() {

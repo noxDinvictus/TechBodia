@@ -1,5 +1,5 @@
-import { M } from '~/data/generatedModels';
 import type { Filter, I } from '~/data/interfaces';
+import { M } from '~/data/models';
 import { Note } from '~/data/models/note.model';
 import { removeFalseyObject } from '~/utils/common-function';
 

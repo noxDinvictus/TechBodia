@@ -1,4 +1,4 @@
-import type { M } from '~/data/generatedModels';
+import type { M } from '~/data/models';
 import { User } from '~/data/models/user.model';
 
 type Model = User.Model;

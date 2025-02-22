@@ -1,5 +1,5 @@
-import type { M } from './generatedModels';
 import type { I } from './interfaces';
+import type { M } from './models';
 
 export const commonState: I.CommonState = {
   isCreating: false,

@@ -1,4 +1,4 @@
-import type { M } from './generatedModels';
+import type { M } from './models';
 
 export namespace I {
   export interface CommonState {

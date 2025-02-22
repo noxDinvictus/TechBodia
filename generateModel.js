@@ -8,10 +8,7 @@ const __dirname = path.dirname(__filename);
 
 // Define Paths
 const dtoFilePath = path.join(__dirname, 'data/dtos.ts'); // Adjusted path
-const outputFilePath = path.join(
-  path.dirname(dtoFilePath),
-  'generatedModels.ts',
-);
+const outputFilePath = path.join(path.dirname(dtoFilePath), 'models.ts');
 
 // Check if `dtos.ts` exists before reading
 if (!fs.existsSync(dtoFilePath)) {

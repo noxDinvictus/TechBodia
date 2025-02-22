@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { commonState, metadata } from '~/data/constant';
-import type { M } from '~/data/generatedModels';
 import type { Filter, I } from '~/data/interfaces';
+import type { M } from '~/data/models';
 import type { Note } from '~/data/models/note.model';
 import * as service from './index.service';
 

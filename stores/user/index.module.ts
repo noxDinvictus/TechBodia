@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { commonState } from '~/data/constant';
-import type { M } from '~/data/generatedModels';
 import type { I } from '~/data/interfaces';
+import type { M } from '~/data/models';
 import * as service from './index.service';
 
 type Payload = M.UserPayload;
