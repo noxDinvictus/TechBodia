@@ -18,25 +18,6 @@ export interface MetadataDTO {
   totalItems?: number;
 }
 
-export interface Note {
-  /** @format uuid */
-  noteId?: string;
-  /** @minLength 1 */
-  title: string;
-  content?: string | null;
-  /** @format date-time */
-  createdAt?: string | null;
-  /** @format uuid */
-  createdByUserId: string;
-  /** @format date-time */
-  updatedAt?: string | null;
-  /** @format uuid */
-  updatedByUserId?: string | null;
-  isDeleted?: boolean;
-  /** @format byte */
-  rowVersion?: string | null;
-}
-
 export interface NoteDTO {
   /** @format uuid */
   noteId?: string;
@@ -56,19 +37,7 @@ export interface NoteDTOResultOk {
   statusCode?: number;
 }
 
-export interface NoteFilter {
-  searchText?: string | null;
-  orderByColumn?: string | null;
-  orderByDescending?: boolean;
-  /** @format int32 */
-  currentPage?: number;
-  /** @format int32 */
-  itemsPerPage?: number;
-}
-
 export interface NoteNoteDTONoteFilterListResultDTO {
-  filter?: NoteFilter | null;
-  baseItems?: Note[] | null;
   items?: NoteDTO[] | null;
   metadata?: MetadataDTO | null;
 }
