@@ -1,14 +1,13 @@
 import { defineStore } from 'pinia';
 import { commonState, metadata } from '~/data/constant';
-import type { NoteFilter } from '~/data/dtos';
 import type { M } from '~/data/generatedModels';
-import type { I } from '~/data/interfaces';
+import type { Filter, I } from '~/data/interfaces';
 import type { Note } from '~/data/models/note.model';
 import * as service from './index.service';
 
 type Model = Note.Model;
 type Payload = M.NotePayload;
-type F = NoteFilter;
+type F = Filter.Note;
 
 interface NoteState extends I.CommonState {
   notes: Model[];

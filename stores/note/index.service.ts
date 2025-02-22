@@ -1,12 +1,11 @@
-import type { NoteFilter } from '~/data/dtos';
 import { M } from '~/data/generatedModels';
-import type { I } from '~/data/interfaces';
+import type { Filter, I } from '~/data/interfaces';
 import { Note } from '~/data/models/note.model';
 import { removeFalseyObject } from '~/utils/common-function';
 
 type Model = Note.Model;
 type Payload = M.NotePayload;
-type F = NoteFilter;
+type F = Filter.Note;
 
 type Result = Promise<Model | null>;
 type Results = Promise<I.Results<Model> | null>;
