@@ -14,30 +14,6 @@ export namespace M {
     }
   }
 
-  export class Note {
-    noteId: string;
-    title: string;
-    content: string;
-    createdAt: string;
-    createdByUserId: string;
-    updatedAt: string;
-    updatedByUserId: string;
-    isDeleted: boolean;
-    rowVersion: string;
-
-    constructor(data: any) {
-      this.noteId = data?.noteId ?? '';
-      this.title = data?.title ?? '';
-      this.content = data?.content ?? '';
-      this.createdAt = data?.createdAt ?? '';
-      this.createdByUserId = data?.createdByUserId ?? '';
-      this.updatedAt = data?.updatedAt ?? '';
-      this.updatedByUserId = data?.updatedByUserId ?? '';
-      this.isDeleted = data?.isDeleted;
-      this.rowVersion = data?.rowVersion ?? '';
-    }
-  }
-
   export class NoteDTO {
     noteId: string;
     title: string;
